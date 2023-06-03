@@ -13,12 +13,9 @@ const icons = {
     },
 };
 
-chrome.runtime.onMessage.addListener((dark, sender) => {
-    chrome.action.setIcon({tabId: sender.tab.id, path: dark ? icons.dark : icons.light});
-});
+chrome.runtime.onMessage.addListener((dark, sender) =>
+    chrome.action.setIcon({tabId: sender.tab.id, path: dark ? icons.dark : icons.light}));
 
-chrome.action.onClicked.addListener(async tab => {
-    const host = tab.url.match(/:\/\/([^\/]*)/)[1];
-    await chrome.tabs.sendMessage(tab.id, null).catch(()=>{});
-});
+chrome.action.onClicked.addListener(async tab =>
+    chrome.tabs.sendMessage(tab.id, null).catch(()=>{}));
 
