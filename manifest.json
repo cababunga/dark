@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Fake dark theme",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "Dark theme for the sites that don't provide one",
   "action": {
     "default_icon": {
@@ -11,12 +11,12 @@
       "128": "icons/light-128.png"
     }
   },
-  "permissions": ["activeTab", "storage", "tabs"],
+  "permissions": ["activeTab", "scripting", "storage"],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [{
-    "js": ["dark.js"],
+    "js": ["dark.js", "add.js"],
     "matches": ["<all_urls>"]
   }]
 }
